@@ -12,7 +12,7 @@ class StringListImplTest {
     private StringListImpl stringList;
 
     @BeforeEach
-    public void setup() {
+    public void setUp() {
         stringList = new StringListImpl();
     }
 
