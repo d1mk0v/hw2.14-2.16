@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.exceptions.NullItemException;
+import org.example.exceptions.StorageIsFullException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
