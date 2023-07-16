@@ -7,63 +7,49 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StringListImplTest {
 
+    private StringListImpl stringList;
+
     @BeforeEach
-    void setUp() {
+    public void setup() {
+        stringList = new StringListImpl();
     }
 
     @Test
-    void add() {
+    public void testAdd() {
+        // Arrange
+        String item = "Test";
+
+        // Act
+        String result = stringList.add(item);
+
+        // Assert
+        assertEquals(item, result);
+        assertEquals(1, stringList.size());
+        assertTrue(stringList.contains(item));
     }
 
     @Test
-    void testAdd() {
+    public void testAddWithNullItem() {
+        // Arrange
+        String item = null;
+
+        // Assert
+        assertThrows(NullItemException.class, () -> {
+            // Act
+            stringList.add(item);
+        });
     }
 
     @Test
-    void set() {
-    }
+    public void testAddWithFullStorage() {
+        // Arrange
+        StringListImpl stringList = new StringListImpl(1);
+        stringList.add("Item1");
 
-    @Test
-    void remove() {
-    }
-
-    @Test
-    void testRemove() {
-    }
-
-    @Test
-    void contains() {
-    }
-
-    @Test
-    void indexOf() {
-    }
-
-    @Test
-    void lastIndexOf() {
-    }
-
-    @Test
-    void get() {
-    }
-
-    @Test
-    void testEquals() {
-    }
-
-    @Test
-    void size() {
-    }
-
-    @Test
-    void isEmpty() {
-    }
-
-    @Test
-    void clear() {
-    }
-
-    @Test
-    void toArray() {
+        // Assert
+        assertThrows(StorageIsFullException.class, () -> {
+            // Act
+            stringList.add("Item2");
+        });
     }
 }
