@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.exceptions.ElementNotFoundException;
 import org.example.exceptions.InvalidIndexException;
 import org.example.exceptions.NullItemException;
 import org.example.exceptions.StorageIsFullException;
@@ -21,35 +22,68 @@ public class StringListImpl implements StringList {
 
     @Override
     public String add(String item) {
-        return null;
+        validateSize();
+        validateItem(item);
+        storage[size++] = item;
+        return item;
     }
 
     @Override
     public String add(int index, String item) {
-        return null;
+        validateSize();
+        validateItem(item);
+        validateIndex(index);
+
+        if (index == size) {
+            storage[size++] = item;
+            return item;
+        }
+
+        System.arraycopy(storage, index, storage, index + 1, size - index);
+
+        return item;
     }
 
     @Override
     public String set(int index, String item) {
-        return null;
+        validateIndex(index);
+        validateItem(item);
+        storage[index] = item;
+        return item;
     }
 
     @Override
     public String remove(String item) {
+        validateItem(item);
 
-        return null;
+        int index = indexOf(item);
+
+        if (index == -1) {
+            throw new ElementNotFoundException();
+        }
+
+        if (index != size) {
+            System.arraycopy(storage, index + 1, storage, index, size - index);
+        }
+
+        size--;
+        return item;
     }
 
     @Override
     public String remove(int index) {
+        validateIndex(index);
+
+        String item = storage[index];
+
+
 
         return null;
     }
 
     @Override
     public boolean contains(String item) {
-
-        return false;
+        return indexOf(item) != -1;
     }
 
     @Override
@@ -76,8 +110,8 @@ public class StringListImpl implements StringList {
 
     @Override
     public String get(int index) {
-
-        return null;
+        validateIndex(index);
+        return storage[index];
     }
 
     @Override
