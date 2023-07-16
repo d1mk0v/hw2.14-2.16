@@ -76,9 +76,12 @@ public class StringListImpl implements StringList {
 
         String item = storage[index];
 
+        if (index != size) {
+            System.arraycopy(storage, index + 1, storage, index, size - index);
+        }
 
-
-        return null;
+        size--;
+        return item;
     }
 
     @Override
