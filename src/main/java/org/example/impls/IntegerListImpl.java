@@ -1,4 +1,4 @@
-package org.example;
+package org.example.impls;
 
 import org.example.exceptions.ElementNotFoundException;
 import org.example.exceptions.InvalidIndexException;
@@ -192,4 +192,5 @@ public class IntegerListImpl implements IntegerList {
         }
         return false;
     }
+
 }
