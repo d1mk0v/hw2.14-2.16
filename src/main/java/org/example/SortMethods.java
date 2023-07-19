@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class SortMethods {
     public static void main(String[] args) {
+
         sortBubble(generateRandomArray());
         sortSelection(generateRandomArray());
         sortInsertion(generateRandomArray());
@@ -21,7 +22,7 @@ public class SortMethods {
 
     public static void sortBubble(int[] copy) {
 
-        generateRandomArray();
+//        generateRandomArray();
 
         long start = System.currentTimeMillis();
 
@@ -32,12 +33,12 @@ public class SortMethods {
                 }
             }
         }
-
         System.out.println("bubbleSpeed - " + (System.currentTimeMillis() - start));
     }
 
     public static void sortSelection(int[] copy) {
-        generateRandomArray();
+
+//        generateRandomArray();
 
         long start = System.currentTimeMillis();
 
@@ -56,7 +57,8 @@ public class SortMethods {
     }
 
     public static void sortInsertion(int[] copy) {
-        generateRandomArray();
+
+//        generateRandomArray();
 
         long start = System.currentTimeMillis();
 
